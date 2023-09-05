@@ -1,0 +1,248 @@
+{
+  "isSuccessful": true,
+  "message": "Successful",
+  "priceCredit": 0.023213,
+  "usage": {
+    "promptTokens": 5743,
+    "completionTokens": 1496,
+    "tokens": 7239
+  },
+  "chatResponse": "{\n  \"locations\": [\n    {\n      \"name\": \"Hogwarts\",\n      \"description\": \"The magical school where most of the story takes place.\"\n    },\n    {\n      \"name\": \"Great Hall\",\n      \"description\": \"The main dining hall in Hogwarts.\"\n    },\n    {\n      \"name\": \"Quidditch field\",\n      \"description\": \"The field where the Quidditch matches are played.\"\n    },\n    {\n      \"name\": \"Marble staircase\",\n      \"description\": \"The main staircase in Hogwarts made of marble.\"\n    },\n    {\n      \"name\": \"Third floor corridor\",\n      \"description\": \"A corridor on the third floor of Hogwarts.\"\n    },\n    {\n      \"name\": \"Girls' bathroom\",\n      \"description\": \"A bathroom in Hogwarts.\"\n    }\n  ],\n  \"scenes\": [\n    {\n      \"location\": \"Hogwarts\",\n      \"setting\": \"The next day\",\n      \"situation\": \"Harry and Ron discussing the mysterious object\",\n      \"characterSlugs\": [\"Harry\", \"Ron\"],\n      \"text\": \"Malfoy couldn’t believe his eyes...\"\n    },\n    {\n      \"location\": \"Great Hall\",\n      \"setting\": \"During breakfast\",\n      \"situation\": \"The arrival of the broomstick package\",\n      \"characterSlugs\": [\"Harry\", \"Ron\", \"Malfoy\", \"McGonagall\"],\n      \"text\": \"As the owls flooded into the Great Hall...\"\n    },\n    {\n      \"location\": \"Entrance hall\",\n      \"setting\": \"On the way upstairs\",\n      \"situation\": \"Meeting Crabbe and Goyle\",\n      \"characterSlugs\": [\"Harry\", \"Ron\", \"Malfoy\", \"Flitwick\"],\n      \"text\": \"They left the hall quickly...\"\n    },\n    {\n      \"location\": \"Marble staircase\",\n      \"setting\": \"Heading upstairs\",\n      \"situation\": \"Encountering Hermione\",\n      \"characterSlugs\": [\"Harry\", \"Ron\", \"Hermione\"],\n      \"text\": \"So I suppose you think that’s a reward...\"\n    },\n    {\n      \"location\": \"Dormitory\",\n      \"setting\": \"Unwrapping the broomstick\",\n      \"situation\": \"Harry and Ron unwrapping the Nimbus Two Thousand\",\n      \"characterSlugs\": [\"Harry\", \"Ron\"],\n      \"text\": \"Wow,” Ron sighed, as the broomstick rolled onto Harry’s bedspread...\"\n    },\n    {\n      \"location\": \"Quidditch field\",\n      \"setting\": \"First training session\",\n      \"situation\": \"Harry trying out the broomstick\",\n      \"characterSlugs\": [\"Harry\", \"Wood\"],\n      \"text\": \"As seven o’clock drew nearer...\"\n    },\n    {\n      \"location\": \"Charms class\",\n      \"setting\": \"During class\",\n      \"situation\": \"Learning to make objects fly\",\n      \"characterSlugs\": [\"Harry\", \"Seamus\", \"Ron\", \"Hermione\", \"Flitwick\"],\n      \"text\": \"On Halloween morning they woke to the delicious smell of baking pumpkin wafting through the corridors...\"\n    },\n    {\n      \"location\": \"Girls' bathroom\",\n      \"setting\": \"Confronting the troll\",\n      \"situation\": \"Saving Hermione\",\n      \"characterSlugs\": [\"Harry\", \"Ron\", \"Hermione\", \"McGonagall\", \"Snape\", \"Quirrell\"],\n      \"text\": \"Hermione Granger was shrinking against the wall opposite, looking as if she was about to faint...\"\n    },\n    {\n      \"location\": \"Great Hall\",\n      \"setting\": \"During the Halloween feast\",\n      \"situation\": \"The troll attack\",\n      \"characterSlugs\": [\"Quirrell\", \"Dumbledore\", \"Percy\", \"Harry\", \"Ron\"],\n      \"text\": \"A thousand live bats fluttered from the walls and ceiling while a thousand more swooped over the tables...\"\n    },\n    {\n      \"location\": \"Common room\",\n      \"setting\": \"After the troll incident\",\n      \"situation\": \"Apologizing to Hermione\",\n      \"characterSlugs\": [\"Harry\", \"Ron\", \"Hermione\"],\n      \"text\": \"The common room was packed and noisy...\"\n    }\n  ],\n  \"characters\": [\n    {\n      \"slug\": \"Harry\",\n      \"name\": \"Harry\",\n      \"gender\": \"Male\",\n      \"description\": \"The main protagonist of the story.\",\n      \"appearance\": \"Messy hair, glasses\",\n      \"voice\": \"Unknown\"\n    },\n    {\n      \"slug\": \"Ron\",\n      \"name\": \"Ron\",\n      \"gender\": \"Male\",\n      \"description\": \"Harry's best friend.\",\n      \"appearance\": \"Red hair\",\n      \"voice\": \"Unknown\"\n    },\n    {\n      \"slug\": \"Malfoy\",\n      \"name\": \"Malfoy\",\n      \"gender\": \"Male\",\n      \"description\": \"Harry's rival and a bully.\",\n      \"appearance\": \"Unknown\",\n      \"voice\": \"Unknown\"\n    },\n    {\n      \"slug\": \"McGonagall\",\n      \"name\": \"McGonagall\",\n      \"gender\": \"Female\",\n      \"description\": \"A professor at Hogwarts.\",\n      \"appearance\": \"Unknown\",\n      \"voice\": \"Unknown\"\n    },\n    {\n      \"slug\": \"Flitwick\",\n      \"name\": \"Flitwick\",\n      \"gender\": \"Male\",\n      \"description\": \"A professor at Hogwarts.\",\n      \"appearance\": \"Unknown\",\n      \"voice\": \"Unknown\"\n    },\n    {\n      \"slug\": \"Hermione\",\n      \"name\": \"Hermione\",\n      \"gender\": \"Female\",\n      \"description\": \"Harry and Ron's friend.\",\n      \"appearance\": \"Unknown\",\n      \"voice\": \"Unknown\"\n    },\n    {\n      \"slug\": \"Seamus\",\n      \"name\": \"Seamus\",\n      \"gender\": \"Male\",\n      \"description\": \"Harry's classmate.\",\n      \"appearance\": \"Unknown\",\n      \"voice\": \"Unknown\"\n    },\n    {\n      \"slug\": \"Snape\",\n      \"name\": \"Snape\",\n      \"gender\": \"Male\",\n      \"description\": \"A professor at Hogwarts.\",\n      \"appearance\": \"Unknown\",\n      \"voice\": \"Unknown\"\n    },\n    {\n      \"slug\": \"Quirrell\",\n      \"name\": \"Quirrell\",\n      \"gender\": \"Male\",\n      \"description\": \"A professor at Hogwarts.\",\n      \"appearance\": \"Unknown\",\n      \"voice\": \"Unknown\"\n    },\n    {\n      \"slug\": \"Dumbledore\",\n      \"name\": \"Dumbledore\",\n      \"gender\": \"Male\",\n      \"description\": \"The headmaster of Hogwarts.\",\n      \"appearance\": \"Unknown\",\n      \"voice\": \"Unknown\"\n    },\n    {\n      \"slug\": \"Percy\",\n      \"name\": \"Percy\",\n      \"gender\": \"Male\",\n      \"description\": \"Ron's older brother and a prefect.\",\n      \"appearance\": \"Unknown\",\n      \"voice\": \"Unknown\"\n    }\n  ]\n}",
+  "finishReason": "stop",
+  "jsonResponse": {
+    "locations": [
+      {
+        "name": "Hogwarts",
+        "description": "The magical school where most of the story takes place."
+      },
+      {
+        "name": "Great Hall",
+        "description": "The main dining hall in Hogwarts."
+      },
+      {
+        "name": "Quidditch field",
+        "description": "The field where the Quidditch matches are played."
+      },
+      {
+        "name": "Marble staircase",
+        "description": "The main staircase in Hogwarts made of marble."
+      },
+      {
+        "name": "Third floor corridor",
+        "description": "A corridor on the third floor of Hogwarts."
+      },
+      {
+        "name": "Girls' bathroom",
+        "description": "A bathroom in Hogwarts."
+      }
+    ],
+    "scenes": [
+      {
+        "location": "Hogwarts",
+        "setting": "The next day",
+        "situation": "Harry and Ron discussing the mysterious object",
+        "characterSlugs": [
+          "Harry",
+          "Ron"
+        ],
+        "text": "Malfoy couldn’t believe his eyes..."
+      },
+      {
+        "location": "Great Hall",
+        "setting": "During breakfast",
+        "situation": "The arrival of the broomstick package",
+        "characterSlugs": [
+          "Harry",
+          "Ron",
+          "Malfoy",
+          "McGonagall"
+        ],
+        "text": "As the owls flooded into the Great Hall..."
+      },
+      {
+        "location": "Entrance hall",
+        "setting": "On the way upstairs",
+        "situation": "Meeting Crabbe and Goyle",
+        "characterSlugs": [
+          "Harry",
+          "Ron",
+          "Malfoy",
+          "Flitwick"
+        ],
+        "text": "They left the hall quickly..."
+      },
+      {
+        "location": "Marble staircase",
+        "setting": "Heading upstairs",
+        "situation": "Encountering Hermione",
+        "characterSlugs": [
+          "Harry",
+          "Ron",
+          "Hermione"
+        ],
+        "text": "So I suppose you think that’s a reward..."
+      },
+      {
+        "location": "Dormitory",
+        "setting": "Unwrapping the broomstick",
+        "situation": "Harry and Ron unwrapping the Nimbus Two Thousand",
+        "characterSlugs": [
+          "Harry",
+          "Ron"
+        ],
+        "text": "Wow,” Ron sighed, as the broomstick rolled onto Harry’s bedspread..."
+      },
+      {
+        "location": "Quidditch field",
+        "setting": "First training session",
+        "situation": "Harry trying out the broomstick",
+        "characterSlugs": [
+          "Harry",
+          "Wood"
+        ],
+        "text": "As seven o’clock drew nearer..."
+      },
+      {
+        "location": "Charms class",
+        "setting": "During class",
+        "situation": "Learning to make objects fly",
+        "characterSlugs": [
+          "Harry",
+          "Seamus",
+          "Ron",
+          "Hermione",
+          "Flitwick"
+        ],
+        "text": "On Halloween morning they woke to the delicious smell of baking pumpkin wafting through the corridors..."
+      },
+      {
+        "location": "Girls' bathroom",
+        "setting": "Confronting the troll",
+        "situation": "Saving Hermione",
+        "characterSlugs": [
+          "Harry",
+          "Ron",
+          "Hermione",
+          "McGonagall",
+          "Snape",
+          "Quirrell"
+        ],
+        "text": "Hermione Granger was shrinking against the wall opposite, looking as if she was about to faint..."
+      },
+      {
+        "location": "Great Hall",
+        "setting": "During the Halloween feast",
+        "situation": "The troll attack",
+        "characterSlugs": [
+          "Quirrell",
+          "Dumbledore",
+          "Percy",
+          "Harry",
+          "Ron"
+        ],
+        "text": "A thousand live bats fluttered from the walls and ceiling while a thousand more swooped over the tables..."
+      },
+      {
+        "location": "Common room",
+        "setting": "After the troll incident",
+        "situation": "Apologizing to Hermione",
+        "characterSlugs": [
+          "Harry",
+          "Ron",
+          "Hermione"
+        ],
+        "text": "The common room was packed and noisy..."
+      }
+    ],
+    "characters": [
+      {
+        "slug": "Harry",
+        "name": "Harry",
+        "gender": "Male",
+        "description": "The main protagonist of the story.",
+        "appearance": "Messy hair, glasses",
+        "voice": "Unknown"
+      },
+      {
+        "slug": "Ron",
+        "name": "Ron",
+        "gender": "Male",
+        "description": "Harry's best friend.",
+        "appearance": "Red hair",
+        "voice": "Unknown"
+      },
+      {
+        "slug": "Malfoy",
+        "name": "Malfoy",
+        "gender": "Male",
+        "description": "Harry's rival and a bully.",
+        "appearance": "Unknown",
+        "voice": "Unknown"
+      },
+      {
+        "slug": "McGonagall",
+        "name": "McGonagall",
+        "gender": "Female",
+        "description": "A professor at Hogwarts.",
+        "appearance": "Unknown",
+        "voice": "Unknown"
+      },
+      {
+        "slug": "Flitwick",
+        "name": "Flitwick",
+        "gender": "Male",
+        "description": "A professor at Hogwarts.",
+        "appearance": "Unknown",
+        "voice": "Unknown"
+      },
+      {
+        "slug": "Hermione",
+        "name": "Hermione",
+        "gender": "Female",
+        "description": "Harry and Ron's friend.",
+        "appearance": "Unknown",
+        "voice": "Unknown"
+      },
+      {
+        "slug": "Seamus",
+        "name": "Seamus",
+        "gender": "Male",
+        "description": "Harry's classmate.",
+        "appearance": "Unknown",
+        "voice": "Unknown"
+      },
+      {
+        "slug": "Snape",
+        "name": "Snape",
+        "gender": "Male",
+        "description": "A professor at Hogwarts.",
+        "appearance": "Unknown",
+        "voice": "Unknown"
+      },
+      {
+        "slug": "Quirrell",
+        "name": "Quirrell",
+        "gender": "Male",
+        "description": "A professor at Hogwarts.",
+        "appearance": "Unknown",
+        "voice": "Unknown"
+      },
+      {
+        "slug": "Dumbledore",
+        "name": "Dumbledore",
+        "gender": "Male",
+        "description": "The headmaster of Hogwarts.",
+        "appearance": "Unknown",
+        "voice": "Unknown"
+      },
+      {
+        "slug": "Percy",
+        "name": "Percy",
+        "gender": "Male",
+        "description": "Ron's older brother and a prefect.",
+        "appearance": "Unknown",
+        "voice": "Unknown"
+      }
+    ]
+  }
+}

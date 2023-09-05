@@ -1,0 +1,119 @@
+[
+  {
+    "modelName": "SchemaItem",
+    "projectRelativePath": "packages/ai-conversation/ai-creative/src/generateRapAudioFile.ts",
+    "name": "NamedParameters<typeof generateRapAudioFile>",
+    "absolutePath": "/Users/king/os/packages/ai-conversation/ai-creative/src/generateRapAudioFile.ts",
+    "operationRelativePath": "src/generateRapAudioFile.ts",
+    "schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$ref": "#/definitions/NamedParameters%3Ctypeof%20generateRapAudioFile%3E",
+      "definitions": {
+        "NamedParameters<typeof generateRapAudioFile>": {
+          "type": "object",
+          "properties": {
+            "context": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "topicOrLyrics": {
+                  "type": "string"
+                },
+                "me_personSlug": {
+                  "type": "string",
+                  "description": "Forced by api"
+                },
+                "isExternalCall": {
+                  "type": "boolean",
+                  "description": "Forced by api. Indicates that this function call is called from outside. If this is the case, it means that some parameters may need to be validated more"
+                },
+                "relation_personSlug": {
+                  "type": "string",
+                  "description": "Defaults to \"root\" by api, but can also be set.\n\nMade optional for compatibility with the api and functions that don't need this, but the function should always receive \"root\" by api (at least)"
+                }
+              },
+              "required": [
+                "topicOrLyrics"
+              ]
+            }
+          },
+          "required": [
+            "context"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  {
+    "modelName": "SchemaItem",
+    "projectRelativePath": "packages/ai-conversation/ai-creative/src/translateLyrics.ts",
+    "name": "NamedParameters<typeof translateLyrics>",
+    "absolutePath": "/Users/king/os/packages/ai-conversation/ai-creative/src/translateLyrics.ts",
+    "operationRelativePath": "src/translateLyrics.ts",
+    "schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$ref": "#/definitions/NamedParameters%3Ctypeof%20translateLyrics%3E",
+      "definitions": {
+        "NamedParameters<typeof translateLyrics>": {
+          "type": "object",
+          "properties": {
+            "context": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "artist": {
+                  "type": "string"
+                },
+                "targetLanguage": {
+                  "type": "string"
+                },
+                "me_personSlug": {
+                  "type": "string",
+                  "description": "Forced by api"
+                },
+                "isExternalCall": {
+                  "type": "boolean",
+                  "description": "Forced by api. Indicates that this function call is called from outside. If this is the case, it means that some parameters may need to be validated more"
+                },
+                "relation_personSlug": {
+                  "type": "string",
+                  "description": "Defaults to \"root\" by api, but can also be set.\n\nMade optional for compatibility with the api and functions that don't need this, but the function should always receive \"root\" by api (at least)"
+                }
+              },
+              "required": [
+                "artist",
+                "name",
+                "targetLanguage"
+              ]
+            }
+          },
+          "required": [
+            "context"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  {
+    "modelName": "SchemaItem",
+    "projectRelativePath": "packages/ai-conversation/ai-creative/src/generateRapAudioFile.test.ts",
+    "name": "NamedParameters<typeof test>",
+    "absolutePath": "/Users/king/os/packages/ai-conversation/ai-creative/src/generateRapAudioFile.test.ts",
+    "operationRelativePath": "src/generateRapAudioFile.test.ts",
+    "schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$ref": "#/definitions/NamedParameters%3Ctypeof%20test%3E",
+      "definitions": {
+        "NamedParameters<typeof test>": {
+          "type": "object",
+          "additionalProperties": false
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "name": "ai-creative",
+  "main": "build/index.js",
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {
+    "bun-types": "latest",
+    "@types/web": "^0.0.111"
+  },
+  "version": "0.0.1",
+  "scripts": {
+    "css": "tailwindcss -o css.css"
+  },
+  "license": "ISC",
+  "operation": {
+    "lastRebuildAt": 1693498616031,
+    "isBuildSuccessful": true
+  },
+  "type": "module"
+}

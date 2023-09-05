@@ -1,0 +1,206 @@
+{
+  "isSuccessful": true,
+  "message": "Successful",
+  "priceCredit": 0.023854,
+  "usage": {
+    "promptTokens": 5778,
+    "completionTokens": 1630,
+    "tokens": 7408
+  },
+  "chatResponse": "{\n  \"locations\": [\n    {\n      \"name\": \"Hogwarts\",\n      \"description\": \"Hogwarts is the magical school that Harry and his friends attend. It is described as a castle with corridors, classrooms, and the Great Hall.\"\n    },\n    {\n      \"name\": \"Great Hall\",\n      \"description\": \"The Great Hall is where the students have their meals and gather for special events. It is described as having long tables and floating candles.\"\n    },\n    {\n      \"name\": \"Quidditch field\",\n      \"description\": \"The Quidditch field is where the students play the game of Quidditch. It is described as having golden poles with hoops and seats for the spectators.\"\n    },\n    {\n      \"name\": \"Girls' bathroom\",\n      \"description\": \"The girls' bathroom is where Hermione is cornered by the troll. It is described as a place where the troll knocks the sinks off the walls.\"\n    },\n    {\n      \"name\": \"Corridor\",\n      \"description\": \"The corridor is where Harry and his friends encounter the troll and hide from it. It is described as being crowded with confused Hufflepuffs.\"\n    }\n  ],\n  \"scenes\": [\n    {\n      \"location\": \"Hogwarts\",\n      \"setting\": \"Great Hall\",\n      \"situation\": \"Unboxing of Harry's new broomstick\",\n      \"characterSlugs\": [\"harry\", \"ron\", \"malfoy\"],\n      \"textStartsWith\": \"As the owls flooded into the Great Hall as usual, everyone’s attention was caught at once by a long, thin package carried by six large screech owls.\"\n    },\n    {\n      \"location\": \"Hogwarts\",\n      \"setting\": \"Entrance hall\",\n      \"situation\": \"Encounter with Crabbe and Goyle\",\n      \"characterSlugs\": [\"harry\", \"ron\", \"malfoy\"],\n      \"textStartsWith\": \"They left the hall quickly, wanting to unwrap the broomstick in private before their first class, but halfway across the entrance hall they found the way upstairs barred by Crabbe and Goyle.\"\n    },\n    {\n      \"location\": \"Hogwarts\",\n      \"setting\": \"Quidditch field\",\n      \"situation\": \"First Quidditch training session\",\n      \"characterSlugs\": [\"harry\", \"ron\", \"oliver\", \"malfoy\"],\n      \"textStartsWith\": \"As seven o’clock drew nearer, Harry left the castle and set off in the dusk toward the Quidditch field.\"\n    },\n    {\n      \"location\": \"Hogwarts\",\n      \"setting\": \"Marble staircase\",\n      \"situation\": \"Argument with Hermione\",\n      \"characterSlugs\": [\"harry\", \"ron\", \"hermione\"],\n      \"textStartsWith\": \"“So I suppose you think that’s a reward for breaking rules?” came an angry voice from just behind them. Hermione was stomping up the stairs, looking disapprovingly at the package in Harry’s hand.\"\n    },\n    {\n      \"location\": \"Hogwarts\",\n      \"setting\": \"Quidditch field\",\n      \"situation\": \"Quidditch practice with Wood\",\n      \"characterSlugs\": [\"harry\", \"ron\", \"oliver\"],\n      \"textStartsWith\": \"Too eager to fly again to wait for Wood, Harry mounted his broomstick and kicked off from the ground.\"\n    },\n    {\n      \"location\": \"Hogwarts\",\n      \"setting\": \"Charms classroom\",\n      \"situation\": \"Charms class with Professor Flitwick\",\n      \"characterSlugs\": [\"harry\", \"ron\", \"hermione\", \"malfoy\"],\n      \"textStartsWith\": \"On Halloween morning they woke to the delicious smell of baking pumpkin wafting through the corridors.\"\n    },\n    {\n      \"location\": \"Hogwarts\",\n      \"setting\": \"Girls' bathroom\",\n      \"situation\": \"Encounter with the mountain troll\",\n      \"characterSlugs\": [\"harry\", \"ron\", \"hermione\"],\n      \"textStartsWith\": \"Someone knocked into Harry as they hurried past him. It was Hermione.\"\n    },\n    {\n      \"location\": \"Hogwarts\",\n      \"setting\": \"Great Hall\",\n      \"situation\": \"Halloween feast\",\n      \"characterSlugs\": [\"harry\", \"ron\", \"hermione\", \"quirrell\", \"snape\", \"mcgonagall\", \"dumbledore\"],\n      \"textStartsWith\": \"The common room was packed and noisy. Everyone was eating the food that had been sent up.\"\n    }\n  ],\n  \"characters\": [\n    {\n      \"slug\": \"harry\",\n      \"name\": \"Harry Potter\",\n      \"gender\": \"male\",\n      \"description\": \"Harry is the main protagonist of the book. He is described as having messy black hair and glasses.\",\n      \"appearance\": \"messy black hair, glasses\",\n      \"voice\": \"not specified\"\n    },\n    {\n      \"slug\": \"ron\",\n      \"name\": \"Ron Weasley\",\n      \"gender\": \"male\",\n      \"description\": \"Ron is Harry's best friend. He is described as having red hair and freckles.\",\n      \"appearance\": \"red hair, freckles\",\n      \"voice\": \"not specified\"\n    },\n    {\n      \"slug\": \"malfoy\",\n      \"name\": \"Draco Malfoy\",\n      \"gender\": \"male\",\n      \"description\": \"Malfoy is Harry's rival. He is described as having blonde hair and a sneering expression.\",\n      \"appearance\": \"blonde hair, sneering expression\",\n      \"voice\": \"not specified\"\n    },\n    {\n      \"slug\": \"oliver\",\n      \"name\": \"Oliver Wood\",\n      \"gender\": \"male\",\n      \"description\": \"Oliver is the Quidditch team captain. He is described as being enthusiastic about Quidditch.\",\n      \"appearance\": \"not specified\",\n      \"voice\": \"not specified\"\n    },\n    {\n      \"slug\": \"hermione\",\n      \"name\": \"Hermione Granger\",\n      \"gender\": \"female\",\n      \"description\": \"Hermione is Harry and Ron's friend. She is described as being bossy and a know-it-all.\",\n      \"appearance\": \"not specified\",\n      \"voice\": \"not specified\"\n    },\n    {\n      \"slug\": \"quirrell\",\n      \"name\": \"Professor Quirrell\",\n      \"gender\": \"male\",\n      \"description\": \"Professor Quirrell is a teacher at Hogwarts. He is described as having a turban askew and a terrified expression.\",\n      \"appearance\": \"turban askew, terrified expression\",\n      \"voice\": \"not specified\"\n    },\n    {\n      \"slug\": \"snape\",\n      \"name\": \"Professor Snape\",\n      \"gender\": \"male\",\n      \"description\": \"Professor Snape is a teacher at Hogwarts. He is described as giving Harry a piercing look.\",\n      \"appearance\": \"not specified\",\n      \"voice\": \"not specified\"\n    },\n    {\n      \"slug\": \"mcgonagall\",\n      \"name\": \"Professor McGonagall\",\n      \"gender\": \"female\",\n      \"description\": \"Professor McGonagall is a teacher at Hogwarts. She is described as being angry and disappointed.\",\n      \"appearance\": \"not specified\",\n      \"voice\": \"not specified\"\n    },\n    {\n      \"slug\": \"dumbledore\",\n      \"name\": \"Professor Dumbledore\",\n      \"gender\": \"male\",\n      \"description\": \"Professor Dumbledore is the headmaster of Hogwarts. He is described as being informed of the events.\",\n      \"appearance\": \"not specified\",\n      \"voice\": \"not specified\"\n    }\n  ]\n}",
+  "finishReason": "stop",
+  "jsonResponse": {
+    "locations": [
+      {
+        "name": "Hogwarts",
+        "description": "Hogwarts is the magical school that Harry and his friends attend. It is described as a castle with corridors, classrooms, and the Great Hall."
+      },
+      {
+        "name": "Great Hall",
+        "description": "The Great Hall is where the students have their meals and gather for special events. It is described as having long tables and floating candles."
+      },
+      {
+        "name": "Quidditch field",
+        "description": "The Quidditch field is where the students play the game of Quidditch. It is described as having golden poles with hoops and seats for the spectators."
+      },
+      {
+        "name": "Girls' bathroom",
+        "description": "The girls' bathroom is where Hermione is cornered by the troll. It is described as a place where the troll knocks the sinks off the walls."
+      },
+      {
+        "name": "Corridor",
+        "description": "The corridor is where Harry and his friends encounter the troll and hide from it. It is described as being crowded with confused Hufflepuffs."
+      }
+    ],
+    "scenes": [
+      {
+        "location": "Hogwarts",
+        "setting": "Great Hall",
+        "situation": "Unboxing of Harry's new broomstick",
+        "characterSlugs": [
+          "harry",
+          "ron",
+          "malfoy"
+        ],
+        "textStartsWith": "As the owls flooded into the Great Hall as usual, everyone’s attention was caught at once by a long, thin package carried by six large screech owls."
+      },
+      {
+        "location": "Hogwarts",
+        "setting": "Entrance hall",
+        "situation": "Encounter with Crabbe and Goyle",
+        "characterSlugs": [
+          "harry",
+          "ron",
+          "malfoy"
+        ],
+        "textStartsWith": "They left the hall quickly, wanting to unwrap the broomstick in private before their first class, but halfway across the entrance hall they found the way upstairs barred by Crabbe and Goyle."
+      },
+      {
+        "location": "Hogwarts",
+        "setting": "Quidditch field",
+        "situation": "First Quidditch training session",
+        "characterSlugs": [
+          "harry",
+          "ron",
+          "oliver",
+          "malfoy"
+        ],
+        "textStartsWith": "As seven o’clock drew nearer, Harry left the castle and set off in the dusk toward the Quidditch field."
+      },
+      {
+        "location": "Hogwarts",
+        "setting": "Marble staircase",
+        "situation": "Argument with Hermione",
+        "characterSlugs": [
+          "harry",
+          "ron",
+          "hermione"
+        ],
+        "textStartsWith": "“So I suppose you think that’s a reward for breaking rules?” came an angry voice from just behind them. Hermione was stomping up the stairs, looking disapprovingly at the package in Harry’s hand."
+      },
+      {
+        "location": "Hogwarts",
+        "setting": "Quidditch field",
+        "situation": "Quidditch practice with Wood",
+        "characterSlugs": [
+          "harry",
+          "ron",
+          "oliver"
+        ],
+        "textStartsWith": "Too eager to fly again to wait for Wood, Harry mounted his broomstick and kicked off from the ground."
+      },
+      {
+        "location": "Hogwarts",
+        "setting": "Charms classroom",
+        "situation": "Charms class with Professor Flitwick",
+        "characterSlugs": [
+          "harry",
+          "ron",
+          "hermione",
+          "malfoy"
+        ],
+        "textStartsWith": "On Halloween morning they woke to the delicious smell of baking pumpkin wafting through the corridors."
+      },
+      {
+        "location": "Hogwarts",
+        "setting": "Girls' bathroom",
+        "situation": "Encounter with the mountain troll",
+        "characterSlugs": [
+          "harry",
+          "ron",
+          "hermione"
+        ],
+        "textStartsWith": "Someone knocked into Harry as they hurried past him. It was Hermione."
+      },
+      {
+        "location": "Hogwarts",
+        "setting": "Great Hall",
+        "situation": "Halloween feast",
+        "characterSlugs": [
+          "harry",
+          "ron",
+          "hermione",
+          "quirrell",
+          "snape",
+          "mcgonagall",
+          "dumbledore"
+        ],
+        "textStartsWith": "The common room was packed and noisy. Everyone was eating the food that had been sent up."
+      }
+    ],
+    "characters": [
+      {
+        "slug": "harry",
+        "name": "Harry Potter",
+        "gender": "male",
+        "description": "Harry is the main protagonist of the book. He is described as having messy black hair and glasses.",
+        "appearance": "messy black hair, glasses",
+        "voice": "not specified"
+      },
+      {
+        "slug": "ron",
+        "name": "Ron Weasley",
+        "gender": "male",
+        "description": "Ron is Harry's best friend. He is described as having red hair and freckles.",
+        "appearance": "red hair, freckles",
+        "voice": "not specified"
+      },
+      {
+        "slug": "malfoy",
+        "name": "Draco Malfoy",
+        "gender": "male",
+        "description": "Malfoy is Harry's rival. He is described as having blonde hair and a sneering expression.",
+        "appearance": "blonde hair, sneering expression",
+        "voice": "not specified"
+      },
+      {
+        "slug": "oliver",
+        "name": "Oliver Wood",
+        "gender": "male",
+        "description": "Oliver is the Quidditch team captain. He is described as being enthusiastic about Quidditch.",
+        "appearance": "not specified",
+        "voice": "not specified"
+      },
+      {
+        "slug": "hermione",
+        "name": "Hermione Granger",
+        "gender": "female",
+        "description": "Hermione is Harry and Ron's friend. She is described as being bossy and a know-it-all.",
+        "appearance": "not specified",
+        "voice": "not specified"
+      },
+      {
+        "slug": "quirrell",
+        "name": "Professor Quirrell",
+        "gender": "male",
+        "description": "Professor Quirrell is a teacher at Hogwarts. He is described as having a turban askew and a terrified expression.",
+        "appearance": "turban askew, terrified expression",
+        "voice": "not specified"
+      },
+      {
+        "slug": "snape",
+        "name": "Professor Snape",
+        "gender": "male",
+        "description": "Professor Snape is a teacher at Hogwarts. He is described as giving Harry a piercing look.",
+        "appearance": "not specified",
+        "voice": "not specified"
+      },
+      {
+        "slug": "mcgonagall",
+        "name": "Professor McGonagall",
+        "gender": "female",
+        "description": "Professor McGonagall is a teacher at Hogwarts. She is described as being angry and disappointed.",
+        "appearance": "not specified",
+        "voice": "not specified"
+      },
+      {
+        "slug": "dumbledore",
+        "name": "Professor Dumbledore",
+        "gender": "male",
+        "description": "Professor Dumbledore is the headmaster of Hogwarts. He is described as being informed of the events.",
+        "appearance": "not specified",
+        "voice": "not specified"
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "isSuccessful": true,
+  "message": "Successful",
+  "priceCredit": 0.44232,
+  "usage": {
+    "promptTokens": 5778,
+    "completionTokens": 797,
+    "tokens": 6575
+  },
+  "chatResponse": "{\n  \"locations\": [\n    {\n      \"name\": \"Hogwarts\",\n      \"description\": \"Hogwarts the next day after Halloween, where Harry and Ron stayed. It also includes the Quidditch field, where Harry has his first training session, and the stadium he visits for the first time. There's also the Great Hall where the Halloween decorations were. Part of the scene took place in the entrance hall where Harry and Ron encountered Crabbe and Goyle. Also, part of the scene happened in the third floor hallway and in the girls' bathroom.\"\n    }\n  ],\n  \"scenes\": [\n    {\n      \"location\": \"Hogwarts\",\n      \"setting\": \"the following day after Halloween\",\n      \"situation\": \"Harry and Ron talk about the package moved from Gringotts to Hogwarts, and they planned revenge on Malfoy. The Nimbus Two Thousand also arrived for Harry, causing envy among some of the students. Later on, they heard of the troll and decided to rescue Hermione.\",\n      \"characterSlugs\": [ \"harry\", \"ron\", \"hermione\", \"malfoy\", \"neville\", \"professor-mcgonagall\", \"crabbe-and-goyle\", \"professor-flitwick\", \"quarrel\", \"oliver-wood\" ],\n      \"textStartsWith\": \"Malfoy couldn’t believe his eyes when he saw that Harry and Ron were still at Hogwarts the next day\"\n    }\n  ],\n  \"characters\": [\n    {\n      \"slug\": \"harry\",\n      \"name\": \"Harry\",\n      \"gender\": \"male\",\n      \"description\": \"Harry gets his new broomstick, a Nimbus Two Thousand, and has his first Quidditch training session. He and Ron also plan revenge on Malfoy after the encounter in the entrance hall.\",\n      \"appearance\": \"\",\n      \"voice\": \"\"\n    },\n    {\n      \"slug\": \"ron\",\n      \"name\": \"Ron\",\n      \"gender\": \"male\",\n      \"description\": \"Ron feels envious about Harry's new broomstick. They plan revenge on Malfoy after the encounter in the entrance hall. Ron also tried to help during the troll encounter.\",\n      \"appearance\": \"\",\n      \"voice\": \"\"\n    },\n    {\n      \"slug\": \"hermione\",\n      \"name\": \"Hermione\",\n      \"gender\": \"female\",\n      \"description\": \"Hermione is upset with Harry and Ron and refuses to speak to them. However, during the encounter with the troll, she defended Harry and Ron before Professor McGonagall.\",\n      \"appearance\": \"\",\n      \"voice\": \"\"\n    },\n    {\n      \"slug\": \"malfoy\",\n      \"name\": \"Malfoy\",\n      \"gender\": \"male\",\n      \"description\": \"Malfoy is surprised that Harry and Ron stayed at Hogwarts. He also feels spiteful and jealous when he learns that Harry got a new broomstick.\",\n      \"appearance\": \"\",\n      \"voice\": \"\"\n    },\n    {\n      \"slug\": \"neville\",\n      \"name\": \"Neville\",\n      \"gender\": \"male\",\n      \"description\": \"Neville was scared after his encounter with the three-headed dog and vows never to go near it again.\",\n      \"appearance\": \"\",\n      \"voice\": \"\"\n    },\n    {\n      \"slug\": \"professor-mcgonagall\",\n      \"name\": \"Professor M. McGonagall\",\n      \"gender\": \"female\",\n      \"description\": \"Professor McGonagall sent Harry his new broomstick and let him know about his first training session. When she found out about the student's encounter with the troll, she was disappointed, but also acknowledged that not many first years could have taken on a full-grown mountain troll.\",\n      \"appearance\": \"\",\n      \"voice\": \"\"\n    }\n  ]\n}",
+  "finishReason": "stop",
+  "jsonResponse": {
+    "locations": [
+      {
+        "name": "Hogwarts",
+        "description": "Hogwarts the next day after Halloween, where Harry and Ron stayed. It also includes the Quidditch field, where Harry has his first training session, and the stadium he visits for the first time. There's also the Great Hall where the Halloween decorations were. Part of the scene took place in the entrance hall where Harry and Ron encountered Crabbe and Goyle. Also, part of the scene happened in the third floor hallway and in the girls' bathroom."
+      }
+    ],
+    "scenes": [
+      {
+        "location": "Hogwarts",
+        "setting": "the following day after Halloween",
+        "situation": "Harry and Ron talk about the package moved from Gringotts to Hogwarts, and they planned revenge on Malfoy. The Nimbus Two Thousand also arrived for Harry, causing envy among some of the students. Later on, they heard of the troll and decided to rescue Hermione.",
+        "characterSlugs": [
+          "harry",
+          "ron",
+          "hermione",
+          "malfoy",
+          "neville",
+          "professor-mcgonagall",
+          "crabbe-and-goyle",
+          "professor-flitwick",
+          "quarrel",
+          "oliver-wood"
+        ],
+        "textStartsWith": "Malfoy couldn’t believe his eyes when he saw that Harry and Ron were still at Hogwarts the next day"
+      }
+    ],
+    "characters": [
+      {
+        "slug": "harry",
+        "name": "Harry",
+        "gender": "male",
+        "description": "Harry gets his new broomstick, a Nimbus Two Thousand, and has his first Quidditch training session. He and Ron also plan revenge on Malfoy after the encounter in the entrance hall.",
+        "appearance": "",
+        "voice": ""
+      },
+      {
+        "slug": "ron",
+        "name": "Ron",
+        "gender": "male",
+        "description": "Ron feels envious about Harry's new broomstick. They plan revenge on Malfoy after the encounter in the entrance hall. Ron also tried to help during the troll encounter.",
+        "appearance": "",
+        "voice": ""
+      },
+      {
+        "slug": "hermione",
+        "name": "Hermione",
+        "gender": "female",
+        "description": "Hermione is upset with Harry and Ron and refuses to speak to them. However, during the encounter with the troll, she defended Harry and Ron before Professor McGonagall.",
+        "appearance": "",
+        "voice": ""
+      },
+      {
+        "slug": "malfoy",
+        "name": "Malfoy",
+        "gender": "male",
+        "description": "Malfoy is surprised that Harry and Ron stayed at Hogwarts. He also feels spiteful and jealous when he learns that Harry got a new broomstick.",
+        "appearance": "",
+        "voice": ""
+      },
+      {
+        "slug": "neville",
+        "name": "Neville",
+        "gender": "male",
+        "description": "Neville was scared after his encounter with the three-headed dog and vows never to go near it again.",
+        "appearance": "",
+        "voice": ""
+      },
+      {
+        "slug": "professor-mcgonagall",
+        "name": "Professor M. McGonagall",
+        "gender": "female",
+        "description": "Professor McGonagall sent Harry his new broomstick and let him know about his first training session. When she found out about the student's encounter with the troll, she was disappointed, but also acknowledged that not many first years could have taken on a full-grown mountain troll.",
+        "appearance": "",
+        "voice": ""
+      }
+    ]
+  }
+}

@@ -1,0 +1,3 @@
+I've had this idea many times, always create a new angle to it, but the underlying tech required relates a lot. I'm now a lot further and have done a lot of experimentation. I've created lots of intergrations with tools and AI stuff. It'd be great to work on this!
+
+Before I start, also look over my todos/ideas on app.zion, because there's probalby a lot there too still...

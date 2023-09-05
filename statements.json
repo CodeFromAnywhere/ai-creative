@@ -1,0 +1,331 @@
+[
+  {
+    "modelName": "SwcFunction",
+    "name": "generateRapAudioFile",
+    "start": 5804,
+    "end": 11512,
+    "length": 5708,
+    "raw": "export const generateRapAudioFile = async (\n  context: StandardContext & { topicOrLyrics: string },\n) => {\n  const projectRoot = getProjectRoot();\n  if (!projectRoot) {\n    return;\n  }\n  const { topicOrLyrics, ...standardContext } = context;\n\n  const { credentials } = await getAiApiCredentials(standardContext);\n\n  if (!credentials) {\n    return;\n  }\n\n  const instrumentalFolder = path.join(\n    projectRoot,\n    \"memory\",\n    \"assets\",\n    \"music-instrumental\",\n  );\n\n  const genresAvailable = (\n    await fs.readdir(instrumentalFolder, { withFileTypes: true })\n  )\n    .filter((x) => x.isDirectory())\n    .map((x) => x.name);\n\n  const jsonGptResult = await jsonGpt<{ voiceId: string; genre: string }>(\n    `Consider the following user-message:\n\n---\n\n${topicOrLyrics}\n\n---\n\nChoose the voice and genre that would match best.`,\n    `{\"voiceId\": \"relikk\"|\"damon-deepvoice\",\"genre\": ${genresAvailable\n      .map((x) => `\"${x}\"`)\n      .join(\" | \")}}`,\n    credentials,\n  );\n\n  const rapperVoiceKey = jsonGptResult.jsonResponse?.voiceId || \"relikk\";\n  const genre = jsonGptResult?.jsonResponse?.genre || \"hip-hop\";\n\n  const rawGenreMusicFolder = (folder: string) =>\n    path.join(instrumentalFolder, folder);\n  const genreMusicFolder = fs.existsSync(rawGenreMusicFolder(genre))\n    ? rawGenreMusicFolder(genre)\n    : rawGenreMusicFolder(genresAvailable[0]);\n\n  const style =\n    styleObject[rapperVoiceKey as keyof typeof styleObject] ||\n    \"rapping poetic rap answers\";\n\n  // NB: if you use a rapper like eminem/snoop/etc then a watermark needs to be in the rap lyrics (this is not the real [name])\n  const isNonCommercialVoice = nonCommercialVoiceKeys.includes(rapperVoiceKey);\n\n  const name = style.split(\"(\")[0];\n  let absoluteRapSongsLocation = path.join(\n    projectRoot,\n    \"memory\",\n    \"persons\",\n    rapperVoiceKey,\n    \"music\",\n  );\n\n  const artistMusicExists = fs.existsSync(absoluteRapSongsLocation);\n\n  if (!artistMusicExists) {\n    console.log(\n      `artist doesn't have their own music! getting the genres music folder`,\n      genreMusicFolder,\n    );\n    absoluteRapSongsLocation = genreMusicFolder;\n  }\n\n  const fileCollectionObject = await readFolderFileCollections(\n    absoluteRapSongsLocation,\n  );\n\n  if (Object.keys(fileCollectionObject).length === 0) {\n    return { isSuccessful: false, chatResponse: \"No songs available\" };\n  }\n\n  const songs = (\n    await Promise.all(\n      Object.values(fileCollectionObject).map(async (files) => {\n        const mp3File = files.find((x) => x.endsWith(\".mp3\"));\n        const jsonFile = files.find((x) => x.endsWith(\".json\"));\n\n        if (!mp3File) {\n          return;\n        }\n\n        let json: null | { name: string; startAtMs: number } = null;\n\n        if (jsonFile) {\n          json = await readJsonFile<{ name: string; startAtMs: number }>(\n            path.join(absoluteRapSongsLocation, jsonFile),\n          );\n        }\n\n        const mp3FilePath = path.join(absoluteRapSongsLocation, mp3File);\n\n        return {\n          name: json?.name,\n          startAtMs: json?.startAtMs,\n          audioPath: mp3FilePath,\n        };\n      }),\n    )\n  ).filter(notEmpty);\n\n  if (songs.length === 0) {\n    console.log(`didn't find a song!!!`, absoluteRapSongsLocation);\n    return { isSuccessful: false, message: \"Didn't find a song\" };\n  }\n\n  const pickedSong = pickRandomArrayItem(songs);\n\n  const systemMessage = `You are Rapli, a large language model developed by Chat AI. In all your answers, act as if you are ${style}. Ensure that the chorus repeats at least three times. ${\n    isNonCommercialVoice\n      ? `Start your lyrics with stating that you are not the real rapper and just an AI clone.`\n      : \"\"\n  }`;\n\n  const chatResult = await textToText({\n    model: \"openai/gpt4\",\n    credentials,\n    text: `${systemMessage}\\n\\n${topicOrLyrics}`,\n    personSlug: context.me_personSlug,\n  });\n\n  const lyrics = chatResult.chatResponse;\n\n  if (!lyrics) {\n    return { isSuccessful: false, message: \"Couldn't generate lyrics\" };\n  }\n  console.log(`done with lyrics`);\n\n  const result = await textToText({\n    credentials,\n    systemMessage:\n      \"You are Rapli, Please omit following words: verse 1/2/3, chorus, intro, outro, bridge, so that only the actual spoken rap/vocals remain. Don't change the actual lyrics\",\n    text: lyrics,\n    personSlug: context.me_personSlug,\n  });\n\n  console.log(`done with clean lyrics`);\n  //  console.log(result.chatResponse);\n  // Get the voice of the lyrics with the right speaker\n\n  if (!result.chatResponse) {\n    return { isSuccessful: false, message: \"Didn't make clean lyrics\" };\n  }\n\n  const { projectRelativePath, priceCredit } = await textToSpeechCached({\n    text: result.chatResponse,\n    isLanguageEnforced: true,\n    model: \"uberduck\",\n    voiceKey: rapperVoiceKey,\n    language: \"english\",\n    targetFormat: \"mp3\",\n\n    ...standardContext,\n  });\n\n  console.log(`done uberducking the clean lyrics`);\n\n  if (!projectRelativePath) {\n    console.log({ isSuccessful: false, message: \"No mp3\" });\n    return;\n  }\n\n  const absoluteLyricsSpeechPath = path.join(projectRoot, projectRelativePath);\n\n  const absolutePath = await ffmpegAddLyricsToSong(\n    absoluteLyricsSpeechPath,\n    pickedSong.audioPath,\n    // NB: default after 5s\n    pickedSong.startAtMs || 5000,\n  );\n\n  const finalProjectRelativePath = absolutePath\n    ? makeRelative(absolutePath, projectRoot)\n    : undefined;\n\n  const url = absolutePath ? normalizeFileToUrl(absolutePath) : undefined;\n\n  if (!url) {\n    console.log(\"NO URL\");\n    return;\n  }\n\n  return {\n    priceCredit,\n    projectRelativePath: finalProjectRelativePath,\n    url,\n    //  lyrics: result.chatResponse,\n    isNonCommercialVoice,\n    artistName: name,\n  };\n};",
+    "absolutePath": "/Users/king/os/packages/ai-conversation/ai-creative/src/generateRapAudioFile.ts",
+    "projectRelativePath": "packages/ai-conversation/ai-creative/src/generateRapAudioFile.ts",
+    "isExported": true,
+    "packageCategory": "ai-conversation",
+    "packageName": "ai-creative",
+    "operationClassification": "ts",
+    "config": {
+      "isPublic": true,
+      "emoji": "🧔🏿‍♂️",
+      "shortDescription": "Generate rap audio file and lyriced songs about any topic.",
+      "categories": [
+        "music"
+      ],
+      "priceCredit": 0.05
+    },
+    "namedParameters": {
+      "modelName": "SchemaItem",
+      "projectRelativePath": "packages/ai-conversation/ai-creative/src/generateRapAudioFile.ts",
+      "name": "NamedParameters<typeof generateRapAudioFile>",
+      "absolutePath": "/Users/king/os/packages/ai-conversation/ai-creative/src/generateRapAudioFile.ts",
+      "operationRelativePath": "src/generateRapAudioFile.ts",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "$ref": "#/definitions/NamedParameters%3Ctypeof%20generateRapAudioFile%3E",
+        "definitions": {
+          "NamedParameters<typeof generateRapAudioFile>": {
+            "type": "object",
+            "properties": {
+              "context": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "topicOrLyrics": {
+                    "type": "string"
+                  },
+                  "me_personSlug": {
+                    "type": "string",
+                    "description": "Forced by api"
+                  },
+                  "isExternalCall": {
+                    "type": "boolean",
+                    "description": "Forced by api. Indicates that this function call is called from outside. If this is the case, it means that some parameters may need to be validated more"
+                  },
+                  "relation_personSlug": {
+                    "type": "string",
+                    "description": "Defaults to \"root\" by api, but can also be set.\n\nMade optional for compatibility with the api and functions that don't need this, but the function should always receive \"root\" by api (at least)"
+                  }
+                },
+                "required": [
+                  "topicOrLyrics"
+                ]
+              }
+            },
+            "required": [
+              "context"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "parameters": [
+      {
+        "name": "context",
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "topicOrLyrics": {
+              "type": "string"
+            },
+            "me_personSlug": {
+              "type": "string",
+              "description": "Forced by api"
+            },
+            "isExternalCall": {
+              "type": "boolean",
+              "description": "Forced by api. Indicates that this function call is called from outside. If this is the case, it means that some parameters may need to be validated more"
+            },
+            "relation_personSlug": {
+              "type": "string",
+              "description": "Defaults to \"root\" by api, but can also be set.\n\nMade optional for compatibility with the api and functions that don't need this, but the function should always receive \"root\" by api (at least)"
+            }
+          },
+          "required": [
+            "topicOrLyrics"
+          ]
+        },
+        "simplifiedSchema": {
+          "properties": [
+            {
+              "name": "topicOrLyrics",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "me_personSlug",
+              "required": false,
+              "schema": {
+                "fullComment": "Forced by api",
+                "type": "string"
+              }
+            },
+            {
+              "name": "isExternalCall",
+              "required": false,
+              "schema": {
+                "fullComment": "Forced by api. Indicates that this function call is called from outside. If this is the case, it means that some parameters may need to be validated more",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "relation_personSlug",
+              "required": false,
+              "schema": {
+                "fullComment": "Defaults to \"root\" by api, but can also be set.\n\nMade optional for compatibility with the api and functions that don't need this, but the function should always receive \"root\" by api (at least)",
+                "type": "string"
+              }
+            }
+          ],
+          "type": "object"
+        },
+        "required": true
+      }
+    ]
+  },
+  {
+    "modelName": "SwcFunction",
+    "name": "translateLyrics",
+    "start": 661,
+    "end": 1418,
+    "length": 757,
+    "raw": "export const translateLyrics = async (\n  context: StandardContext & {\n    name: string;\n    artist: string;\n    targetLanguage: string;\n  },\n) => {\n  // 1) Find the song on youtube and download it, or find it in our db if we already have it\n  //-----\n  // 2) Remove the music, just get the vocals, using something like spleeter\n  //-----\n  // 3) Transcribe the vocals to get the timestamped lyrics (we can't use the regular lyrics)\n  //-----\n  // 4) Clean up the whisper result to get only the lyrics\n  //-----\n  // 5) Ask GPT4 to come up with a lyrics in the target language that flows the same\n  // -----\n  // 6) Create a video where you'd get the new lyrics as subtitles (with the original below, smaller), overlapping the instrumental audio\n  // ----\n};",
+    "absolutePath": "/Users/king/os/packages/ai-conversation/ai-creative/src/translateLyrics.ts",
+    "projectRelativePath": "packages/ai-conversation/ai-creative/src/translateLyrics.ts",
+    "isExported": true,
+    "packageCategory": "ai-conversation",
+    "packageName": "ai-creative",
+    "operationClassification": "ts",
+    "config": {
+      "isPublic": false,
+      "categories": [
+        "music"
+      ],
+      "shortDescription": "Create a translated version of your favorite song, and sing along to learn any new language!"
+    },
+    "namedParameters": {
+      "modelName": "SchemaItem",
+      "projectRelativePath": "packages/ai-conversation/ai-creative/src/translateLyrics.ts",
+      "name": "NamedParameters<typeof translateLyrics>",
+      "absolutePath": "/Users/king/os/packages/ai-conversation/ai-creative/src/translateLyrics.ts",
+      "operationRelativePath": "src/translateLyrics.ts",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "$ref": "#/definitions/NamedParameters%3Ctypeof%20translateLyrics%3E",
+        "definitions": {
+          "NamedParameters<typeof translateLyrics>": {
+            "type": "object",
+            "properties": {
+              "context": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "artist": {
+                    "type": "string"
+                  },
+                  "targetLanguage": {
+                    "type": "string"
+                  },
+                  "me_personSlug": {
+                    "type": "string",
+                    "description": "Forced by api"
+                  },
+                  "isExternalCall": {
+                    "type": "boolean",
+                    "description": "Forced by api. Indicates that this function call is called from outside. If this is the case, it means that some parameters may need to be validated more"
+                  },
+                  "relation_personSlug": {
+                    "type": "string",
+                    "description": "Defaults to \"root\" by api, but can also be set.\n\nMade optional for compatibility with the api and functions that don't need this, but the function should always receive \"root\" by api (at least)"
+                  }
+                },
+                "required": [
+                  "artist",
+                  "name",
+                  "targetLanguage"
+                ]
+              }
+            },
+            "required": [
+              "context"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "parameters": [
+      {
+        "name": "context",
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "artist": {
+              "type": "string"
+            },
+            "targetLanguage": {
+              "type": "string"
+            },
+            "me_personSlug": {
+              "type": "string",
+              "description": "Forced by api"
+            },
+            "isExternalCall": {
+              "type": "boolean",
+              "description": "Forced by api. Indicates that this function call is called from outside. If this is the case, it means that some parameters may need to be validated more"
+            },
+            "relation_personSlug": {
+              "type": "string",
+              "description": "Defaults to \"root\" by api, but can also be set.\n\nMade optional for compatibility with the api and functions that don't need this, but the function should always receive \"root\" by api (at least)"
+            }
+          },
+          "required": [
+            "artist",
+            "name",
+            "targetLanguage"
+          ]
+        },
+        "simplifiedSchema": {
+          "properties": [
+            {
+              "name": "name",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "artist",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "targetLanguage",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "me_personSlug",
+              "required": false,
+              "schema": {
+                "fullComment": "Forced by api",
+                "type": "string"
+              }
+            },
+            {
+              "name": "isExternalCall",
+              "required": false,
+              "schema": {
+                "fullComment": "Forced by api. Indicates that this function call is called from outside. If this is the case, it means that some parameters may need to be validated more",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "relation_personSlug",
+              "required": false,
+              "schema": {
+                "fullComment": "Defaults to \"root\" by api, but can also be set.\n\nMade optional for compatibility with the api and functions that don't need this, but the function should always receive \"root\" by api (at least)",
+                "type": "string"
+              }
+            }
+          ],
+          "type": "object"
+        },
+        "required": true
+      }
+    ]
+  },
+  {
+    "modelName": "SwcFunction",
+    "name": "test",
+    "start": 66,
+    "end": 274,
+    "length": 208,
+    "raw": "const test = () => {\n  generateRapAudioFile({\n    topicOrLyrics: \"university of groningen\",\n    isExternalCall: false,\n    me_personSlug: \"wijnand\",\n    relation_personSlug: \"root\",\n  }).then(console.log);\n};",
+    "absolutePath": "/Users/king/os/packages/ai-conversation/ai-creative/src/generateRapAudioFile.test.ts",
+    "projectRelativePath": "packages/ai-conversation/ai-creative/src/generateRapAudioFile.test.ts",
+    "isExported": false,
+    "packageCategory": "ai-conversation",
+    "packageName": "ai-creative",
+    "operationClassification": "ts",
+    "namedParameters": {
+      "modelName": "SchemaItem",
+      "projectRelativePath": "packages/ai-conversation/ai-creative/src/generateRapAudioFile.test.ts",
+      "name": "NamedParameters<typeof test>",
+      "absolutePath": "/Users/king/os/packages/ai-conversation/ai-creative/src/generateRapAudioFile.test.ts",
+      "operationRelativePath": "src/generateRapAudioFile.test.ts",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "$ref": "#/definitions/NamedParameters%3Ctypeof%20test%3E",
+        "definitions": {
+          "NamedParameters<typeof test>": {
+            "type": "object",
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  }
+]

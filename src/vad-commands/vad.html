@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <title>Voice Activity Dectection</title>
+</head>
+
+<body>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.7/dist/bundle.min.js"></script>
+    <script>
+        //@ts-check;
+
+        async function main() {
+            const myvad = await vad.MicVAD.new(
+                //Options: https://www.vad.ricky0123.com/docs/API/#options
+                {
+                    onSpeechStart: () => {
+                        document.getElementById("vad").innerText = "Hearing";
+                    },
+
+
+
+                    onSpeechEnd: (audio) => {
+                        // do something with `audio` (Float32Array of audio samples at sample rate 16000)...
+
+
+                        document.getElementById("vad").innerText = "Listening";
+
+                        // send audio fragments to server deepgram transcription endpoint for subsecond transcription
+
+
+                        // https://deepgram.com
+
+                    },
+
+                })
+            myvad.start()
+        }
+        main()
+    </script>
+
+    <div id="vad">Listening</div>
+
+</body>
+
+</html>
